@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, View, Text, TextInput } from 'react-native';
 import TimerButton from './TimerButton';
-export default function TimerForm({ id, title, project }) {
+export default function TimerForm({ id, title, project , closeEditForm, closeCreate}) {
     
     
     const submitText = id ? 'Update' : 'Create';
+    const cancel = id ? closeEditForm : closeCreate
     return (
     <View style={styles.formContainer}>
         <View style={styles.attributeContainer}>
@@ -21,7 +22,7 @@ export default function TimerForm({ id, title, project }) {
         </View>
         <View style={styles.buttonGroup}>
         <TimerButton small color="#21BA45" title={submitText} />
-        <TimerButton small color="#DB2828" title="Cancel" />
+        <TimerButton small color="#DB2828" title="Cancel" onPress={cancel}/>
         </View>
     </View> );
 }

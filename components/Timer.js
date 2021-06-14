@@ -2,17 +2,17 @@ import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { millisecondsToHuman } from '../utils/TimeUtils'; 
 import TimerButton from './TimerButton';
-export default function Timer({ title, project, elapsed }) { 
+export default function Timer({ title, project, elapsed, openEditForm}) { 
     
     const elapsedString = millisecondsToHuman(elapsed);
-    console.log(elapsedString, typeof(elapsedString))
+    //console.log(elapsedString, typeof(elapsedString))
     return (
         <View style={styles.timerContainer}>
             <Text style={styles.title}>{title}</Text>
             <Text>{project}</Text>
             <Text style={styles.elapsedTime}>{elapsedString}</Text>
             <View style={styles.buttonGroup}>
-                <TimerButton color="blue" small title="Edit" />
+                <TimerButton color="blue" small title="Edit" onPress={openEditForm}/>
                 <TimerButton color="blue" small title="Remove" />
             </View>
             <TimerButton color="#21BA45" title="Start" />
